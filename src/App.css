@@ -1,0 +1,75 @@
+.navbarLink{
+  color:#000000 !important;
+  padding:0 30px !important;
+}
+
+.navbarLinkul:first-child{
+  padding-left: 80px !important;
+}
+
+.active{color: #236CE0 !important;}
+
+.d-flex{
+  flex-wrap: wrap !important;
+}
+
+.togglerColor{
+  border-color:#000000 !important;
+  color:#000000 !important;
+}
+
+.maxWidthHomePage{max-width:100% !important;}
+
+.title{font-size:48px; font-weight:bold}
+.para{font-size:22px; font-weight:300}
+
+.btn{
+  padding:15px 30px !important
+}
+
+
+.servpara{
+  font-size:18px;
+  color: #777777;
+  line-height: 32px;
+  padding:0px 0 18px 0;
+}
+
+.colShadow{box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; padding:20px 20px 50px 20px !important;
+}
+
+.colShadow h2{
+  padding:40px 0 20px 0 !important;
+  font-size: 22px;
+  color: #1F1F1F;
+  height:17px;
+  padding-bottom:45px !important;
+}
+.colShadow h2 span{
+  margin-right: 18px;
+}
+
+.colShadow a{
+  text-decoration:none;
+  font-size: 16px;
+  font-weight: 500;
+}
+.colShadow a span{
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 560px) {
+  .homeCol>div{
+    width:90% !important;
+    margin-top:20px;
+    text-align: center;
+  }
+
+  .navbarLinkul:first-child{
+    padding-left: 80px !important;
+  }
+  
+  
+}
