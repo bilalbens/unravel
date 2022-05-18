@@ -3,11 +3,42 @@ import Unravel_logo_black from "../resources/Unravel_logo_black.png"
 import "../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Link, NavLink} from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 
 
 
 function Header() {
+
+    const [logged, setlogged] = useState(true)
+
+    const {userlogin} = useSelector((state)=> state);
+    console.log("userlogin.loading: ",userlogin.loading)
+
+    
+const logout=() => {
+    userlogin.loading = true;
+}
+  
+
+const loog = ()=>{
+    
+            if(!userlogin.loading){
+                return(
+                <li  className={({ isActive }) => isActive ? "nav-item active" : "nav-item" } onClick={() => logout()} >
+                        <NavLink to="/home" className="nav-link navbarLink" >{userlogin.data.message} <span className="mx-3">Logout</span></NavLink>                            
+                </li>)
+            }
+            else{
+                return(
+                <li  className={({ isActive }) => isActive ? "nav-item active" : "nav-item" } >
+                        <NavLink to="/login" className="nav-link navbarLink" >Login</NavLink>                            
+            </li>)
+    }
+}
+
+
+
 
 
   return (
@@ -52,9 +83,7 @@ function Header() {
                 <form className="d-flex justify-content-center" role="search">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             
-                    <li  className={({ isActive }) => isActive ? "nav-item active" : "nav-item" } >
-                        <NavLink to="/login" className="nav-link navbarLink" >Login</NavLink>                            
-                     </li>
+                            {loog()}
                             
                     </ul>
 

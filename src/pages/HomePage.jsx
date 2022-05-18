@@ -8,6 +8,7 @@ import Rectangle121 from "../resources/Rectangle121.png"
 
 function HomePage() {
   return (
+    
     <div>
 
         <div className="d-flex justify-content-between align-items-center  flex-sm-row flex-column homeCol">

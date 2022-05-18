@@ -10,6 +10,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import { Link } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../store/index';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,9 +26,14 @@ const  LoginPage = (props) => {
         password:""
 })
 
+let navigate = useNavigate();
 
 
 
+const {userlogin} = useSelector((state)=> state);
+const dispatch = useDispatch()
+
+  const  {login, logout} = bindActionCreators(actionCreators, dispatch)
 
 // console.log(userlogin)
 
@@ -35,11 +44,19 @@ const  LoginPage = (props) => {
 
   }
 
+  useEffect(() => {
+    if(userlogin.data.status){
+      navigate('/welcome')
+
+  }
+
+  }, [userlogin])
   
 
 
   const handleSubmit =   useCallback(async (e) => {
         e.preventDefault()
+        await login(user)
         // console.log(userlogin)
       }
       )
@@ -112,6 +129,17 @@ const  LoginPage = (props) => {
 }
 
 
-
+// const mapStateToProps = state => {
+//   return {
+//     state
+//   };
+// }
+ 
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getPostById: getPostByIdFunc(dispatch),
+//     getPostBulk: getPostsBulkFunc(dispatch)
+//   }
+// };
 
 export default  LoginPage;
