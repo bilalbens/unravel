@@ -1,15 +1,20 @@
-FROM node:17-alpine
+FROM node:16.4-alpine3.14 as builder
+
 
 WORKDIR /app
-ENV PATH="./node_modules/.bin:$PATH"
 
-
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install 
 
-COPY /src .
+COPY . .
 
 EXPOSE 3000
 
 CMD ["npm", "start"]
+
+
+
+
+
+

@@ -10,20 +10,29 @@ import { useSelector } from 'react-redux';
 
 function Header() {
 
-    const [logged, setlogged] = useState(true)
+    const [logged, setlogged] = useState(false)
 
     const {userlogin} = useSelector((state)=> state);
-    console.log("userlogin.loading: ",userlogin.loading)
+    
+
+    useEffect(() => {
+        if(userlogin.data.status){
+            setlogged(true)
+        }
+      
+    }, [userlogin])
+    
+
 
     
 const logout=() => {
-    userlogin.loading = true;
+    setlogged(false)
 }
   
 
 const loog = ()=>{
     
-            if(!userlogin.loading){
+            if(logged){
                 return(
                 <li  className={({ isActive }) => isActive ? "nav-item active" : "nav-item" } onClick={() => logout()} >
                         <NavLink to="/home" className="nav-link navbarLink" >{userlogin.data.message} <span className="mx-3">Logout</span></NavLink>                            
@@ -33,7 +42,7 @@ const loog = ()=>{
                 return(
                 <li  className={({ isActive }) => isActive ? "nav-item active" : "nav-item" } >
                         <NavLink to="/login" className="nav-link navbarLink" >Login</NavLink>                            
-            </li>)
+                </li>)
     }
 }
 
